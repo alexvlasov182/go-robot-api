@@ -10,5 +10,6 @@ func RegisterRobotRoutes(router *gin.Engine) {
 	robotGroup := router.Group("/api/robots")
 	{
 		robotGroup.POST("/", controllers.CreateRobot)
+		robotGroup.GET("/", controllers.GetAllRobots)
 	}
 }

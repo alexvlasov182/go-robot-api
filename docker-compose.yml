@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: robotdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: go_robot_api
+    environment:
+      DATABASE_URL: "postgresql://user:password@db:5432/robotdb"
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+
+volumes:
+  db-data:

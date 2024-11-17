@@ -8,16 +8,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jackc/pgx/v5/pgxpool"
 )
-
-
-var db *pgxpool.Pool
-
-// InitializeDB initializes the database connection
-func InitializeDB(database *pgxpool.Pool) {
-	db = database
-}
 
 // CreateRobot handles the creation of a new robot
 func CreateRobot(c *gin.Context) {
@@ -28,7 +19,7 @@ func CreateRobot(c *gin.Context) {
 		return
 	}
 
-	robot.LastTested = time.Now().Format(time.RFC3339)
+	robot.LastTested = time.Now()
 
 	query := `INSERT INTO robots (name, status, last_tested, test_results) VALUES ($1, $2, $3, $4) RETURNING id`
 	err := db.QueryRow(context.Background(), query, robot.Name, robot.Status, robot.LastTested, robot.TestResults).Scan(&robot.ID)
