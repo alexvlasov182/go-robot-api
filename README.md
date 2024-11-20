@@ -64,4 +64,4 @@ This project is open-source and available under the MIT License.
 For questions or collaboration:
 
 - Email: drumlife182@gmail.com
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/oleksandr-vlasov-9969ab19b/)
+- LinkedIn: [LinkedIn Profile](https://www.linkedin.com/in/oleksandr-vlasov-9969ab19b/)
